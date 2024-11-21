@@ -1,0 +1,19 @@
+{
+  "name": "@chrono-cache/core",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsup source/index.ts --format cjs,esm --dts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tsup": "^8.3.5",
+    "typescript": "5.6.3",
+    "@chrono-cache/typescript-config": "workspace:*",
+    "@types/node": "^20"
+  }
+}
