@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
+    "dev": "tsup source/index.ts --watch",
     "build": "tsup source/index.ts --format cjs,esm --dts",
     "test": "vitest",
     "test:ui": "vitest --ui"
