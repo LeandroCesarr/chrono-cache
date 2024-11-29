@@ -1,6 +1,10 @@
 # 🚀 **chrono-cache**
 
-## _The modular caching solution for modern applications._
+> The modular caching solution for modern applications.
+
+[![Tests](https://github.com/LeandroCesarr/chrono-cache/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/LeandroCesarr/chrono-cache/actions/workflows/tests.yml)
+![GitHub License](https://img.shields.io/github/license/LeandroCesarr/chrono-cache)
+
 
 ## 📖 About
 
@@ -65,4 +69,4 @@ Contributions are welcome! If you find a bug or have an idea to improve the proj
 
 
 ## ⚖️ License
-This project is licensed under the MIT License.
+[MIT © Leandro C. Silva](./LICENSE)
