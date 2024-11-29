@@ -11,41 +11,13 @@ Currently, the focus is on the **core**, which already includes robust functiona
 
 ## 📦 Available Packages
 
-### **@chrono-cache/core**
+### [**@chrono-cache/core**](./packages/core/README.md)
 
 The backbone of the suite, containing essential modules for efficient caching.
 
 - **Currently supported modes**:
   - **LRU Cache**: An in-memory cache based on the Least Recently Used (LRU) algorithm. In addition to prioritizing the most accessed data, the chrono-cache LRU includes an extra feature: **Time-to-Live (TTL)**. This allows cache items to expire automatically after a defined period, giving you more control over data validity.
   - **File Cache**: A persistent, file-based cache designed to securely store data on disk. Ideal for scenarios where cache needs to persist across restarts.
-    Quick example:
-
-```typescript
-import fs from 'node:fs'
-import { LRUCache, FileCache } from '@chrono-cache/core';
-
-// In-memory LRU cache with TTL
-const lru = new LRUCache({
-  max: 100, // max size in Bytes
-  ttl: 60000 // 1-minute TTL
-});
-
-lru.set('key', 'value');
-
-setTimeout(() => {
-  console.log(lru.get('key')); // null (expired after 1 minute)
-}, 61000);
-
-// File-based cache
-const fileCache = new FileCache({
-  fs,
-  dir: './cache'
-});
-
-fileCache.set('fileKey', JSON.stringify({ data: 'stored in a file' }));
-
-console.log(fileCache.get('fileKey')); // '{ data: 'stored in a file' }'
-```
 
 ---
 
@@ -62,7 +34,7 @@ This package uses **@chrono-cache/core** to manage an in-memory cache with TTL s
 - Reduces operational costs by eliminating the dependency on external distributed cache infrastructure.
 - Makes efficient caching accessible in scalable environments with independent instances.
 
-### **@chrono-cache/remix-cache**
+### **@chrono-cache/remix**
 
 A solution for **Remix**, integrating seamlessly with the framework’s architecture to add caching to loaders, actions, and routes. This package focuses on simplifying data persistence and reuse in Remix applications.
 
@@ -88,6 +60,9 @@ npm install @chrono-cache/core
 ## 🤝 Contributions
 
 Contributions are welcome! If you find a bug or have an idea to improve the project, feel free to open an [issue](https://github.com/LeandroCesarr/chrono-cache/issues) or submit a pull request.
+
+<a href="https://www.buymeacoffee.com/Astronaut4" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
+
 
 ## ⚖️ License
 This project is licensed under the MIT License.
