@@ -6,7 +6,8 @@
     "dev": "turbo dev",
     "lint": "biome check .",
     "test": "turbo test",
-    "test:ui": "turbo test:ui"
+    "test:ui": "turbo test:ui",
+    "publish": "turbo run build lint test && changeset publish"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",

@@ -12,6 +12,9 @@
     "test": {
       "dependsOn": ["^test"]
     },
+    "publish": {
+      "dependsOn": ["^publish", "build"]
+    },
     "test:ui": {
       "dependsOn": ["^test:ui"]
     },
