@@ -1,81 +1,68 @@
-# Turborepo starter
+# 🚀 **chrono-cache**
 
-This is an official starter Turborepo.
+## _The modular caching solution for modern applications._
 
-## Using this example
+## 📖 About
 
-Run the following command:
+**chrono-cache** is a suite of caching tools designed to provide flexibility, simplicity, and performance. Our goal is to offer caching solutions that adapt to different contexts and frameworks, making cache management more efficient and practical.
+Currently, the focus is on the **core**, which already includes robust functionality. Soon, new packages will complement the suite, expanding integration possibilities with popular frameworks.
 
-```sh
-npx create-turbo@latest
+---
+
+## 📦 Available Packages
+
+### [**@chrono-cache/core**](./packages/core/README.md)
+
+The backbone of the suite, containing essential modules for efficient caching.
+
+- **Currently supported modes**:
+  - **LRU Cache**: An in-memory cache based on the Least Recently Used (LRU) algorithm. In addition to prioritizing the most accessed data, the chrono-cache LRU includes an extra feature: **Time-to-Live (TTL)**. This allows cache items to expire automatically after a defined period, giving you more control over data validity.
+  - **File Cache**: A persistent, file-based cache designed to securely store data on disk. Ideal for scenarios where cache needs to persist across restarts.
+
+---
+
+## 🛠 Upcoming Packages
+
+We’re expanding **chrono-cache** to address framework-specific needs. Upcoming packages include:
+
+### **@chrono-cache/next**
+
+A custom cache handler for **Next.js**, designed to address a common challenge: the need for large and costly distributed cache solutions (e.g., Redis) in horizontally scaled applications hosted outside of **Vercel**.
+This package uses **@chrono-cache/core** to manage an in-memory cache with TTL support. After the defined time, the in-memory cache is automatically refreshed locally, removing the need for distributed synchronization.
+**Why does this matter?**
+
+- Reduces operational costs by eliminating the dependency on external distributed cache infrastructure.
+- Makes efficient caching accessible in scalable environments with independent instances.
+
+### **@chrono-cache/remix**
+
+A solution for **Remix**, integrating seamlessly with the framework’s architecture to add caching to loaders, actions, and routes. This package focuses on simplifying data persistence and reuse in Remix applications.
+
+## 🛠 Installation
+
+To get started, install the core package:
+
+```bash
+npm install @chrono-cache/core
 ```
 
-## What's inside?
+## The new packages will be available soon.
 
-This Turborepo includes the following packages/apps:
+## 🌟 Key Benefits
 
-### Apps and Packages
+1. **Modularity**: A core that can be used standalone or as a base for framework-integrated packages.
+2. **Simplicity**: A clear, easy-to-use, and well-documented API.
+3. **Performance**: Tools optimized for different use cases, ensuring efficiency.
+4. **Cost-effectiveness**: Reduce complexity and cost by eliminating the need for external caching solutions in certain situations.
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+---
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+## 🤝 Contributions
 
-### Utilities
+Contributions are welcome! If you find a bug or have an idea to improve the project, feel free to open an [issue](https://github.com/LeandroCesarr/chrono-cache/issues) or submit a pull request.
 
-This Turborepo has some additional tools already setup for you:
+<a href="https://www.buymeacoffee.com/Astronaut4" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
 
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm dev
-```
-
-### Remote Caching
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+## ⚖️ License
+This project is licensed under the MIT License.

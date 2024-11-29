@@ -1,19 +1,24 @@
 {
   "name": "chrono-cache",
-  "private": true,
+  "private": false,
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
-    "lint": "turbo lint",
+    "lint": "biome check .",
     "test": "turbo test",
-    "test:ui": "turbo test:ui"
+    "test:ui": "turbo test:ui",
+    "publish": "turbo run build lint test && changeset publish"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
     "turbo": "^2.3.0",
     "typescript": "5.6.3"
   },
   "packageManager": "pnpm@8.15.6",
   "engines": {
     "node": ">=18"
+  },
+  "dependencies": {
+    "@changesets/cli": "^2.27.10"
   }
 }

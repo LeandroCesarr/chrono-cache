@@ -1,23 +1,48 @@
 {
   "name": "@chrono-cache/core",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Backbone of chrono-cache, designed to provide a flexible and efficient approach to cache management",
+  "types": "./dist/index.d.ts",
+  "main": "./dist/index.js",
+  "type": "module",
+  "repository": "https://github.com/LeandroCesarr/chrono-cache",
   "scripts": {
+    "dev": "tsup source/index.ts --watch",
     "build": "tsup source/index.ts --format cjs,esm --dts",
     "test": "vitest",
     "test:ui": "vitest --ui"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "files": ["dist"],
+  "keywords": [
+    "lru",
+    "cache",
+    "nodejs",
+    "caching",
+    "lru-cache",
+    "file-cache",
+    "ttl-cache",
+    "disk-cache",
+    "performance",
+    "javascript",
+    "memory-cache",
+    "chrono-cache",
+    "file-storage",
+    "data-storage",
+    "cache-library",
+    "modular-cache",
+    "efficient-cache",
+    "in-memory-cache",
+    "cache-expiration"
+  ],
+  "author": "Leandro C. Silva",
+  "license": "MIT",
   "devDependencies": {
     "@chrono-cache/typescript-config": "workspace:*",
-    "@types/node": "^20",
-    "@vitest/ui": "^2.1.5",
+    "@types/node": "^22.10.1",
+    "@vitest/ui": "^2.1.6",
     "tsup": "^8.3.5",
-    "typescript": "5.6.3",
+    "typescript": "5.7.2",
     "vite-tsconfig-paths": "^5.1.3",
-    "vitest": "^2.1.5"
+    "vitest": "^2.1.6"
   }
 }
