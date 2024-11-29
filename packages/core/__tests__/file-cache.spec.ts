@@ -1,10 +1,10 @@
-import fs from 'node:fs'
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { FileCache } from '../source/cache-modules/FileCache';
-import type { NodeFs } from '../source/@types/fs';
-import path from 'node:path';
+import fs from "node:fs";
+import path from "node:path";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import type { NodeFs } from "../source/@types/fs";
+import { FileCache } from "../source/cache-modules/FileCache";
 
-describe('File Cache', () => {
+describe("File Cache", () => {
   let instance: FileCache;
 
   const dir = path.resolve("tests");
@@ -13,14 +13,14 @@ describe('File Cache', () => {
     if (!fs.existsSync(dir)) return;
 
     fs.rmSync(dir, {
-      recursive: true
+      recursive: true,
     });
-  })
+  });
 
   beforeEach(() => {
-    vi.useRealTimers()
+    vi.useRealTimers();
 
-    vi.spyOn(console, 'log').mockImplementation(() => {});
+    vi.spyOn(console, "log").mockImplementation(() => {});
 
     instance = new FileCache({
       dir,
@@ -32,46 +32,48 @@ describe('File Cache', () => {
         writeFile: (f, d) => fs.promises.writeFile(f, d),
         mkdir: (dir) => fs.promises.mkdir(dir, { recursive: true }),
         stat: (f) => fs.promises.stat(f),
-      } as NodeFs
-    })
-  })
+      } as NodeFs,
+    });
+  });
 
-  it('Should returns a valid cached value', async () => {
+  it("Should returns a valid cached value", async () => {
     // Arrange
-    await instance.set('any-key', "Lorem")
-
-    console.log(fs.readFileSync(path.resolve(dir, "any-key")))
+    await instance.set("any-key", "Lorem");
 
     // Act
-    const result = await instance.get('any-key');
+    const result = await instance.get("any-key");
 
     // Assert
-    expect(result).not.toBeNull()
-  })
+    expect(result).not.toBeNull();
+  });
 
-  it('Should not returns a valid cached value', async () => {
+  it("Should not returns a valid cached value", async () => {
     // Arrange
-    expect(await instance.get('any-key')).toBeNull()
-  })
+    expect(await instance.get("any-key")).toBeNull();
+  });
 
-  it('Should not returns a expired cached value', async () => {
+  it("Should not returns a expired cached value", async () => {
     // Arrange
-    await instance.set('any-key', "Lorem", ["tag"])
+    await instance.set("any-key", "Lorem", ["tag"]);
 
-    await instance.revalidateTags(["tag"])
+    await instance.revalidateTags(["tag"]);
 
     // Act
-    const result = await instance.get('any-key');
+    const result = await instance.get("any-key");
 
     // Assert
-    expect(result).toBeNull()
-  })
+    expect(result).toBeNull();
+  });
 
-  it('Should remove caches using tags', async () => {
+  it("Should remove caches using tags", async () => {
     // Arrange
-    const keys: string[] = Array.from({ length: 4 }).map((_, idx) => idx.toString())
+    const keys: string[] = Array.from({ length: 4 }).map((_, idx) =>
+      idx.toString(),
+    );
 
-    const prs = keys.map((key, idx) => instance.set(key, key, [idx % 2 === 0 ? "1" : "2"]))
+    const prs = keys.map((key, idx) =>
+      instance.set(key, key, [idx % 2 === 0 ? "1" : "2"]),
+    );
 
     await Promise.all(prs);
 
@@ -89,5 +91,5 @@ describe('File Cache', () => {
         expect(await instance.get(keys[index] ?? "")).not.toBeNull();
       }
     }
-  })
-})
+  });
+});

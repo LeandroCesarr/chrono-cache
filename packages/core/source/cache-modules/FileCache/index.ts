@@ -1,7 +1,7 @@
-import path from 'node:path';
-import type { NodeFs } from '../../@types/fs';
-import { ManifestManager } from './ManifestManager';
-import { consoleColors } from '../../utils/console';
+import path from "node:path";
+import type { NodeFs } from "../../@types/fs";
+import { consoleColors } from "../../utils/console";
+import { ManifestManager } from "./ManifestManager";
 
 type TCachedValue = {
   value: string | Buffer;
@@ -39,24 +39,24 @@ export class FileCache {
   async get(key: string): Promise<TCachedValue | null> {
     try {
       const filePath = this.getFilePath([key]);
-      const fileTagsPath = this.getFilePath(['tags', key]);
+      const fileTagsPath = this.getFilePath(["tags", key]);
 
       const [fileData, fileTags] = await Promise.all([
-        this.fs.readFile(filePath, 'utf8'),
-        this.fs.readFile(fileTagsPath, 'utf8')
-      ])
+        this.fs.readFile(filePath, "utf8"),
+        this.fs.readFile(fileTagsPath, "utf8"),
+      ]);
 
       const { mtime } = await this.fs.stat(filePath);
       const tags = JSON.parse(fileTags);
 
       if (!fileData || (await this.isExpired(tags, mtime.getTime()))) {
-        throw new Error('Not found or expired');
+        throw new Error("Not found or expired");
       }
 
       if (this.debug)
         console.log(
-          consoleColors.background.blue('[CACHE:SYSTEM]'),
-          consoleColors.text.green('[HIT]')
+          consoleColors.background.blue("[CACHE:SYSTEM]"),
+          consoleColors.text.green("[HIT]"),
         );
 
       return {
@@ -68,8 +68,8 @@ export class FileCache {
 
     if (this.debug)
       console.log(
-        consoleColors.background.blue('[CACHE:SYSTEM]'),
-        consoleColors.text.red('[SKIP]')
+        consoleColors.background.blue("[CACHE:SYSTEM]"),
+        consoleColors.text.red("[SKIP]"),
       );
 
     return await Promise.resolve(null);
@@ -80,11 +80,11 @@ export class FileCache {
    */
   async set(
     key: string,
-    data: TCachedValue['value'],
-    tags: string[] = []
+    data: TCachedValue["value"],
+    tags: string[] = [],
   ): Promise<void> {
     const filePath = this.getFilePath([key]);
-    const fileTagsPath = this.getFilePath(['tags', key]);
+    const fileTagsPath = this.getFilePath(["tags", key]);
 
     await Promise.all([
       this.fs.mkdir(path.dirname(filePath)),

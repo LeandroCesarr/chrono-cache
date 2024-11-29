@@ -1,2 +1,2 @@
-export { LRUCache } from "./cache-modules/LRUCache"
-export { FileCache } from "./cache-modules/FileCache"
+export { LRUCache } from "./cache-modules/LRUCache";
+export { FileCache } from "./cache-modules/FileCache";

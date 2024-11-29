@@ -1,14 +1,13 @@
 import { consoleColors } from "../utils/console";
 
-
 type TLRUCalculateSize<T> = (value: T) => string;
 
 type TCachedValue<TValue> = {
-  value: TValue,
-  tags: string[],
-  lastModified: number,
-  expiresAt: number
-}
+  value: TValue;
+  tags: string[];
+  lastModified: number;
+  expiresAt: number;
+};
 
 interface ILRUCacheProps<TValue> {
   /**
@@ -26,7 +25,7 @@ interface ILRUCacheProps<TValue> {
   /**
    * Function to serialize value
    */
-  serializeValue: TLRUCalculateSize<TValue>
+  serializeValue: TLRUCalculateSize<TValue>;
 }
 
 export class LRUCache<TValue> {
@@ -57,18 +56,18 @@ export class LRUCache<TValue> {
     if (!memoryValue || memoryValue.expiresAt <= Date.now()) {
       if (this.debug)
         console.log(
-          consoleColors.background.green('[CACHE:MEMORY]'),
-          consoleColors.text.yellow('[SKIP]')
-        )
+          consoleColors.background.green("[CACHE:MEMORY]"),
+          consoleColors.text.yellow("[SKIP]"),
+        );
 
       return null;
     }
 
     if (this.debug) {
       console.log(
-        consoleColors.background.green('[CACHE:MEMORY]'),
-        consoleColors.text.green('[HIT]')
-      )
+        consoleColors.background.green("[CACHE:MEMORY]"),
+        consoleColors.text.green("[HIT]"),
+      );
     }
 
     this.touch(key);
@@ -84,9 +83,9 @@ export class LRUCache<TValue> {
 
     if (size > this.maxSize) {
       console.log(
-        consoleColors.background.green('[CACHE:MEMORY]'),
-        consoleColors.text.red('Single item size exceeds max size')
-      )
+        consoleColors.background.green("[CACHE:MEMORY]"),
+        consoleColors.text.red("Single item size exceeds max size"),
+      );
 
       return;
     }
@@ -149,7 +148,7 @@ export class LRUCache<TValue> {
   }
 
   private calculateSize(value: TValue) {
-    return Buffer.byteLength(this.serializeValue(value), 'utf8');
+    return Buffer.byteLength(this.serializeValue(value), "utf8");
   }
 
   /**

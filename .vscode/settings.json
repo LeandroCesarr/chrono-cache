@@ -4,9 +4,5 @@
       "mode": "auto"
     }
   ],
-  "cSpell.words": [
-    "chrono",
-    "ILRU",
-    "TLRU"
-  ]
+  "cSpell.words": ["chrono", "ILRU", "TLRU"]
 }

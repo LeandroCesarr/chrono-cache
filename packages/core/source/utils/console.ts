@@ -10,5 +10,5 @@ export const consoleColors = {
     green: (val: string) => `\x1b[42m${val}\x1b[0m`,
     yellow: (val: string) => `\x1b[43m${val}\x1b[0m`,
     blue: (val: string) => `\x1b[44m${val}\x1b[0m`,
-  }
-}
+  },
+};

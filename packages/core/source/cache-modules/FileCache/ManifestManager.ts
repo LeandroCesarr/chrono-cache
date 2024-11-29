@@ -1,5 +1,5 @@
-import path from 'node:path';
-import type { NodeFs } from '../../@types/fs';
+import path from "node:path";
+import type { NodeFs } from "../../@types/fs";
 
 interface IManifestManagerFile {
   version: number;
@@ -17,7 +17,7 @@ interface IManifestManagerProps {
 }
 
 export class ManifestManager {
-  private static fileName = 'tags-manifest.json';
+  private static fileName = "tags-manifest.json";
   private value?: IManifestManagerFile;
   private baseTags: string[] = [];
   private fs: NodeFs;
@@ -67,7 +67,7 @@ export class ManifestManager {
    */
   async load() {
     try {
-      this.value = JSON.parse(await this.fs.readFile(this.filePath, 'utf8'));
+      this.value = JSON.parse(await this.fs.readFile(this.filePath, "utf8"));
     } catch (err) {
       this.value = { version: 1, items: {} };
     }
