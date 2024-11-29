@@ -1,6 +1,6 @@
 {
   "name": "@chrono-cache/core",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Backbone of chrono-cache, designed to provide a flexible and efficient approach to cache management",
   "types": "./dist/index.d.ts",
   "main": "./dist/index.js",
@@ -12,9 +12,7 @@
     "test": "vitest",
     "test:ui": "vitest --ui"
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "keywords": [
     "lru",
     "cache",
