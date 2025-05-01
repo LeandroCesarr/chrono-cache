@@ -1,7 +1,5 @@
 # 📦 **@chrono-cache/core**
 
-## 📖 About
-
 **@chrono-cache/core** is the backbone of **chrono-cache**, designed to provide a flexible and efficient approach to cache management. It includes two types of cache that can be used in various scenarios:
 
 - **LRU Cache** with TTL (Time-to-Live) support: An in-memory cache that prioritizes frequently accessed data and allows items to expire automatically after a configurable period.
@@ -71,4 +69,4 @@ Contributions are welcome! If you find a bug or have an idea to improve the proj
 
 
 ## ⚖️ License
-This project is licensed under the MIT License.
+[MIT © Leandro C. Silva](./../../LICENSE)

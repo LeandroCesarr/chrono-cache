@@ -9,7 +9,7 @@ type TCachedValue = {
   lastModified: number;
 };
 
-interface IFileCacheProps {
+export interface IFileCacheProps {
   fs: NodeFs;
   dir: string;
   debug?: boolean;

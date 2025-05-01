@@ -1,14 +1,14 @@
 {
-  "name": "@chrono-cache/core",
-  "version": "1.1.0",
-  "description": "Backbone of chrono-cache, designed to provide a flexible and efficient approach to cache management",
+  "name": "@chrono-cache/next",
+  "version": "1.0.0",
+  "description": "A custom cache handler for Next.js, designed to address a common challenge: the need for large and costly distributed cache solutions (e.g., Redis) in horizontally scaled applications hosted outside of Vercel",
   "types": "./dist/index.d.ts",
   "main": "./dist/index.js",
   "type": "module",
   "repository": "https://github.com/LeandroCesarr/chrono-cache",
   "scripts": {
-    "dev": "tsup source/index.ts --watch",
-    "build": "tsup source/index.ts --format cjs,esm --dts",
+    "dev": "export WATCH_MODE=true && tsup --config tsup.config.ts",
+    "build": "tsup --config tsup.config.ts",
     "test": "vitest",
     "test:ui": "vitest --ui"
   },
@@ -34,10 +34,21 @@
     "modular-cache",
     "efficient-cache",
     "in-memory-cache",
-    "cache-expiration"
+    "cache-expiration",
+    "next",
+    "nextjs",
+    "cache-handler",
+    "custom-cache-handler",
+    "vercel"
   ],
   "author": "Leandro C. Silva",
   "license": "MIT",
+  "dependencies": {
+    "@chrono-cache/core": "workspace:*"
+  },
+  "peerDependencies": {
+    "next": "15.x"
+  },
   "devDependencies": {
     "@chrono-cache/typescript-config": "workspace:*",
     "@types/node": "^22.10.1",

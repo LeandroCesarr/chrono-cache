@@ -5,6 +5,7 @@ export interface NodeFs {
   readFile: typeof fs.promises.readFile;
   readFileSync: typeof fs.readFileSync;
   writeFile(f: string, d: string | Buffer): Promise<void>;
-  mkdir(dir: string): Promise<string | undefined>;
+  // biome-ignore lint/suspicious/noConfusingVoidType: <explanation>
+  mkdir(dir: string): Promise<string | void>;
   stat(f: string): Promise<{ mtime: Date }>;
 }
