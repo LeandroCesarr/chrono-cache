@@ -1,4 +1,4 @@
-import { consoleColors } from "../utils/console";
+import { consoleColors } from '../utils/console';
 
 type TLRUCalculateSize<T> = (value: T) => string;
 
@@ -32,15 +32,16 @@ export class LRUCache<TValue> {
   private memoryCache = new Map<string, TCachedValue<TValue>>();
   private cacheSizes = new Map<string, number>();
   private serializeValue: TLRUCalculateSize<TValue>;
-  private debug = false;
+  private maxSize = 10 * 1024 * 1024;
   private totalSize = 0;
   private ttl = 60_000;
-  private maxSize = 0;
+  private debug = false;
 
   constructor(options: ILRUCacheProps<TValue>) {
-    this.maxSize = options.maxSize;
     this.debug = options.debug ?? false;
     this.serializeValue = options.serializeValue;
+
+    if (options.maxSize) this.maxSize = options.maxSize;
 
     if (options.ttl) {
       this.ttl = options.ttl;
@@ -56,8 +57,8 @@ export class LRUCache<TValue> {
     if (!memoryValue || memoryValue.expiresAt <= Date.now()) {
       if (this.debug)
         console.log(
-          consoleColors.background.green("[CACHE:MEMORY]"),
-          consoleColors.text.yellow("[SKIP]"),
+          consoleColors.background.green('[CACHE:MEMORY]'),
+          consoleColors.text.yellow('[SKIP]')
         );
 
       return null;
@@ -65,8 +66,8 @@ export class LRUCache<TValue> {
 
     if (this.debug) {
       console.log(
-        consoleColors.background.green("[CACHE:MEMORY]"),
-        consoleColors.text.green("[HIT]"),
+        consoleColors.background.green('[CACHE:MEMORY]'),
+        consoleColors.text.green('[HIT]')
       );
     }
 
@@ -83,8 +84,8 @@ export class LRUCache<TValue> {
 
     if (size > this.maxSize) {
       console.log(
-        consoleColors.background.green("[CACHE:MEMORY]"),
-        consoleColors.text.red("Single item size exceeds max size"),
+        consoleColors.background.green('[CACHE:MEMORY]'),
+        consoleColors.text.red('Single item size exceeds max size')
       );
 
       return;
@@ -148,7 +149,7 @@ export class LRUCache<TValue> {
   }
 
   private calculateSize(value: TValue) {
-    return Buffer.byteLength(this.serializeValue(value), "utf8");
+    return Buffer.byteLength(this.serializeValue(value), 'utf8');
   }
 
   /**

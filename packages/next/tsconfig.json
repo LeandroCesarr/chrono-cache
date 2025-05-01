@@ -1,0 +1,9 @@
+{
+  "extends": "@chrono-cache/typescript-config/base.json",
+  "compilerOptions": {
+    "isolatedModules": false,
+    "plugins": []
+  },
+  "include": ["**/*.ts", "**/*.mts"],
+  "exclude": ["node_modules"]
+}

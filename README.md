@@ -23,12 +23,6 @@ The backbone of the suite, containing essential modules for efficient caching.
   - **LRU Cache**: An in-memory cache based on the Least Recently Used (LRU) algorithm. In addition to prioritizing the most accessed data, the chrono-cache LRU includes an extra feature: **Time-to-Live (TTL)**. This allows cache items to expire automatically after a defined period, giving you more control over data validity.
   - **File Cache**: A persistent, file-based cache designed to securely store data on disk. Ideal for scenarios where cache needs to persist across restarts.
 
----
-
-## 🛠 Upcoming Packages
-
-We’re expanding **chrono-cache** to address framework-specific needs. Upcoming packages include:
-
 ### **@chrono-cache/next**
 
 A custom cache handler for **Next.js**, designed to address a common challenge: the need for large and costly distributed cache solutions (e.g., Redis) in horizontally scaled applications hosted outside of **Vercel**.
@@ -38,19 +32,15 @@ This package uses **@chrono-cache/core** to manage an in-memory cache with TTL s
 - Reduces operational costs by eliminating the dependency on external distributed cache infrastructure.
 - Makes efficient caching accessible in scalable environments with independent instances.
 
+---
+
+## 🛠 Upcoming Packages
+
+We’re expanding **chrono-cache** to address framework-specific needs. Upcoming packages include:
+
 ### **@chrono-cache/remix**
 
 A solution for **Remix**, integrating seamlessly with the framework’s architecture to add caching to loaders, actions, and routes. This package focuses on simplifying data persistence and reuse in Remix applications.
-
-## 🛠 Installation
-
-To get started, install the core package:
-
-```bash
-npm install @chrono-cache/core
-```
-
-## The new packages will be available soon.
 
 ## 🌟 Key Benefits
 
